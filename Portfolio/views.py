@@ -10,3 +10,6 @@ def home(request):
         'portfolio' : portfolio
     })
     
+    
+def about(request):
+    return render(request, 'about.html')
