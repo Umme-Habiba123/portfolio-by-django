@@ -1,12 +1,16 @@
 from django.urls import path
-
-
 from .views import *
+
 
 
 urlpatterns=[
     path('', home, name='home'),
-    
-    
-    
 ]
+
+
+# if settings.DEBUG:
+#     urlpatterns += static(
+#         settings.MEDIA_URL,
+#         document_root=settings.MEDIA_ROOT
+#     )
+
