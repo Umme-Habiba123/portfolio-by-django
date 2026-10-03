@@ -7,5 +7,7 @@ from .models import Portfolio
 def home(request):
     portfolio=Portfolio.objects.all()
     
-    return render(request, 'home.html')
+    return render(request, 'home.html',{
+        'portfolio' : portfolio
+    })
     
