@@ -1,11 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+```html
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-9">
+
+            <div class="text-center mb-5">
+                <h1>About Me</h1>
+                <p class="text-secondary">
+                    Get to know more about me, my skills and my passion for web development.
+                </p>
+            </div>
+
+
+            <div class="row align-items-center">
+
+                <!-- Image -->
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+
+                    <img src="https://i.ibb.co.com/rGdCZKc8/asdfghjkl-photoaidcom-cropped.png"
+                         class="img-fluid rounded"
+                         style="max-width: 230px;"
+                         alt="Mahiya">
+
+                </div>
+
+
+                <!-- About Text -->
+                <div class="col-md-8">
+
+                    <h2>Hi, I'm Mahiya Rehman Mim</h2>
+
+                    <h5 class="text-secondary mb-3">
+                        Frontend Developer
+                    </h5>
+
+                    <p>
+                        I am a passionate Frontend Developer who enjoys creating
+                        clean, responsive and user-friendly web applications.
+                        I have experience working with modern web technologies
+                        such as React.js, Next.js, JavaScript and Tailwind CSS.
+                    </p>
+
+                    <p>
+                        I enjoy learning new technologies, solving programming
+                        problems and transforming creative ideas into useful
+                        digital experiences.
+                    </p>
+
+                    <p>
+                        Besides frontend development, I am also interested in
+                        backend technologies and continuously improving my
+                        knowledge of Python, Django, Node.js and databases.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- My Journey -->
+            <div class="mt-5">
+
+                <h3>My Journey</h3>
+                <hr>
+
+                <p>
+                    My journey in web development started with learning the
+                    fundamentals of HTML, CSS and JavaScript. Gradually, I
+                    explored modern frameworks and technologies such as
+                    React.js and Next.js.
+                </p>
+
+                <p>
+                    Currently, I am focusing on improving my development skills,
+                    building real-world projects and learning backend
+                    development with Python and Django.
+                </p>
+
+            </div>
+
+
+            <!-- What I Do -->
+            <div class="mt-5">
+
+                <h3>What I Do</h3>
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h5>Frontend Development</h5>
+                        <p>
+                            Building responsive and modern websites using
+                            React.js, Next.js, JavaScript and Tailwind CSS.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5>Backend Development</h5>
+                        <p>
+                            Learning and developing backend applications using
+                            Python, Django, Node.js and databases.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Goal -->
+            <div class="mt-5">
+
+                <h3>My Goal</h3>
+                <hr>
+
+                <p>
+                    My goal is to become a skilled full-stack developer,
+                    continuously learn new technologies and build meaningful
+                    applications that provide a great user experience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
+```
