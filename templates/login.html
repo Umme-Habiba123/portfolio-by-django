@@ -16,28 +16,15 @@
 
 
    <div class="container">
-     <form  method="POST">
-        
+    <form method="POST">
+    {% csrf_token %}
 
-             {% csrf_token %}
-        <div class="mb-3">
-            <label for="username" class="form-label">Name</label>
-            <br>
-                 <input type="text" name="username" placeholder="Username">
+    {{ form.as_p }}
 
-
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-           <input type="password" name="password" placeholder="Password">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-
+    <button type="submit" class="btn btn-primary">
+        Login
+    </button>
+</form>
 
     {% if error %}
     <p>{{ error }}</p>
@@ -45,7 +32,7 @@
 
     <p>
         Don't have an account?
-        <a href="{% url 'signup' %}">Signup</a>
+        <a href="{% url 'registration' %}">Signup</a>
     </p>
 
 

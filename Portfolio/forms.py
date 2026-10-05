@@ -1,6 +1,8 @@
 from django import forms
 from .models import *
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+
 
 
 class PortfolioForm(forms.ModelForm):
@@ -9,7 +11,7 @@ class PortfolioForm(forms.ModelForm):
          fields='__all__'
          
          
-class RegistrationForm(UserChangeForm):
+class RegistrationForm( UserCreationForm):
     username=forms.CharField(label='username', 
      widget=forms.TextInput(
       attrs={
@@ -18,11 +20,11 @@ class RegistrationForm(UserChangeForm):
       }                           
                              ))
     
-    email=forms.CharField(label='password',
-                          widget=forms.PasswordInput(
+    email=forms.CharField(label='Email',
+                          widget=forms.TextInput(
                               attrs={
                                   'class':'form-control',
-                                  'placeholder':'Input Password'
+                                  'placeholder':'Input Email'
                               }
                           ))
     
@@ -40,7 +42,7 @@ class RegistrationForm(UserChangeForm):
          }
      ))
     
-class LoginForm():
+class LoginForm(AuthenticationForm):
    
    username=forms.CharField(label='Username',
     widget=forms.TextInput(
