@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div>
+    <a href="{% url 'addinfo' %}"> <button type="button" class="btn btn-outline-primary my-5">+ Add Information</button>
+    </a>
+    <table class="table table-striped ">
+        {% csrf_token %}
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Bio</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Location</th>
+                <th scope="col">skills</th>
+                <th scope="col">Projects</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in portfolio %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.bio}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.skills}}</td>
+                <td>{{item.projects}}</td>
+
+                </td> <a href="{% url 'updateinfo' item.id %}">
+                    <td><button type="button" class="btn btn-outline-info">✏️</button>
+
+                </a>
+                </td>
+
+                <td> <button type="button" class="btn btn-outline-danger">❌</button>
+                </td>
+
+
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}

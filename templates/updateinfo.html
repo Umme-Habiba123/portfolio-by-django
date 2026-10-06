@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+
+
+<form class="mx-5 my-5 text-center" enctype="multipart/form-data" action="" method="POST">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit" class="btn btn-primary">update Information</button>
+
+</form>

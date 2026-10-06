@@ -74,4 +74,49 @@ def logout_view(request):
     
     
 def dashboard(request):
-    return render('')
+    portfolio=Portfolio.objects.all()
+    
+    return render(request ,'dashboard.html',{
+        'portfolio':portfolio
+    })
+
+
+def AddInfo(request):
+    if request.method=='POST':
+        form =PortfolioForm(request.POST)
+          
+        if form.is_valid():
+          form.save()
+          return redirect('dashboard')
+        
+    else:
+         form=PortfolioForm()
+            
+         
+    return render(request, 'addinfo.html',{
+        'form':form
+    })    
+    
+    
+    
+def UpdateInfo(request, id):
+    portfolio=Portfolio.objects.get(id=id)
+    
+    if request.method=='POST':
+       form=PortfolioForm(request.POST, instance=portfolio)
+       
+       if form.is_valid():
+           form.save()
+           
+           
+           return redirect('dashboard')
+    
+    else:
+        form=PortfolioForm(instance=portfolio)
+        
+        return redirect(request, 'updateinfo.html',{
+            'form' :form
+        })
+    
+    
+    

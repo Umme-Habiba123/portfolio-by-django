@@ -4,7 +4,7 @@ from django.db import models
 
 class Portfolio(models.Model):
     name=models.CharField(max_length=200)
-    profile=models.ImageField(upload_to='profile/')
+    # profile=models.ImageField(upload_to='profile/')
     bio=models.CharField(max_length=200)
     email=models.CharField(max_length=25)
     phone=models.CharField(max_length=20)
