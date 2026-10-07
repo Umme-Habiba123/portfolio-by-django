@@ -13,6 +13,7 @@ urlpatterns=[
     path('logout/', logout_view, name='logout'),
     path('registration/', registration, name='registration'),
     path('addinfo/', AddInfo, name='addinfo'),
+    path('contact/', Contact, name='contact'),
     path('updateinfo/<int:id>/', UpdateInfo, name='updateinfo'),
 ]
 

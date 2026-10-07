@@ -118,5 +118,7 @@ def UpdateInfo(request, id):
             'form' :form
         })
     
+def Contact(request):
+    return render(request, 'contact.html')
     
     
