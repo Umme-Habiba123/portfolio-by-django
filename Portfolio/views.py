@@ -114,11 +114,28 @@ def UpdateInfo(request, id):
     else:
         form=PortfolioForm(instance=portfolio)
         
-        return redirect(request, 'updateinfo.html',{
+    return render(request, 'updateinfo.html',{
             'form' :form
         })
     
+    
 def Contact(request):
-    return render(request, 'contact.html')
-    
-    
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {
+        'form': form
+    })
+
+def resume(request):
+    portfolio = Portfolio.objects.first()
+
+    return render(request, 'resume.html', {
+        'portfolio': portfolio
+    })

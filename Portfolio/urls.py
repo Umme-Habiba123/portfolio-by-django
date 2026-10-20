@@ -15,12 +15,7 @@ urlpatterns=[
     path('addinfo/', AddInfo, name='addinfo'),
     path('contact/', Contact, name='contact'),
     path('updateinfo/<int:id>/', UpdateInfo, name='updateinfo'),
+    path('resume/', resume, name='resume'),
 ]
 
-
-# if settings.DEBUG:
-#     urlpatterns += static(
-#         settings.MEDIA_URL,
-#         document_root=settings.MEDIA_ROOT
-#     )
 

@@ -4,7 +4,18 @@
 
 {% block content %}
 
+<div class="container">
+    <h2>Contact Me</h2>
+    <p>Feel free to contact me using the form below.</p>
 
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
 
 
 
@@ -14,4 +25,3 @@
 
 
 {% endblock %}
-

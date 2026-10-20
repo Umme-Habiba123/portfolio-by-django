@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h2>My Resume</h2><br>
+
+{% if portfolio %}
+    <h5>{{ portfolio.name }}</h5>
+    <p>{{ portfolio.bio }}</p>
+    <p>Email: {{ portfolio.email }}</p>
+    <p>Phone: {{ portfolio.phone }}</p>
+    <p>Location: {{ portfolio.location }}</p>
+    <p>Skills: {{ portfolio.skills }}</p>
+    <p>Projects: {{ portfolio.projects }}</p>
+    <p>Education: {{ portfolio.education }}</p>
+    <p>Experience: {{ portfolio.experience }}</p>
+{% else %}
+    <p>No portfolio information has been added yet.</p>
+{% endif %}
+
+{% endblock content %}
