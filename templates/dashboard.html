@@ -2,11 +2,15 @@
 {% block content %}
 <div class="container">
     {% for item in portfolio %}
+  
     <h3>{{ item.name }}</h3>
     <p>{{ item.bio }}</p>
     <p>{{ item.email }}</p>
 
-    <a href="{% url 'updateinfo' item.id %}">Update</a>
+    <button><a href="{% url 'updateinfo' item.id %}">Update</a></button>
+    <br>
+
+  <button class="my-2">  <a href="{% url 'addinfo' %}">Add Portfolio Info.</a></button>
 {% empty %}
     <p>No portfolio information added yet.</p>
 {% endfor %}
