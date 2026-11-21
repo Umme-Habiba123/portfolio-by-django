@@ -1,121 +1,84 @@
+
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 
-
-class PortfolioForm(forms.ModelForm):
-     class Meta: 
-         model= Portfolio
-         fields='__all__'
-         
-         
-class RegistrationForm( UserCreationForm):
-    username=forms.CharField(label='username', 
-     widget=forms.TextInput(
-      attrs={
-          'class':'form-control',
-          'placeholder':'Input Username'
-      }                           
-                             ))
-    
-    email=forms.CharField(label='Email',
-                          widget=forms.TextInput(
-                              attrs={
-                                  'class':'form-control',
-                                  'placeholder':'Input Email'
-                              }
-                          ))
-    
-    password1=forms.CharField(label='Password',widget=forms.PasswordInput(
-         attrs={
-             'class':'form-control',
-             'placeholder':'Input Password'
-         }
-     ))
-    
-    password2=forms.CharField(label='Password',widget=forms.PasswordInput(
-         attrs={
-             'class':'form-control',
-             'placeholder':'Input Password'
-         }
-     ))
-    
-class LoginForm(AuthenticationForm):
-   
-   username=forms.CharField(label='Username',
-    widget=forms.TextInput(
-        attrs={
-            'class':'form-control',
-            'placeholder':'Input Username'
-        }
-    ))
-   password=forms.CharField(label='Password',
-    widget=forms.PasswordInput(
-        attrs={
-            'class':'form-control',
-            'placeholder':'Input Password'
-        }
-    ))
-   
-
-from django import forms
-from .models import Portfolio, ContactMessage
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
-
 class PortfolioForm(forms.ModelForm):
     class Meta:
         model = Portfolio
-        fields = '__all__'
+        fields = [
+            'name',
+            'bio',
+            'email',
+            'phone',
+            'location',
+            'skills',
+            'projects',
+            'education',
+            'experience',
+        ]
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Input Email'
-        })
-    )
-
-    class Meta(UserCreationForm.Meta):
-        fields = ('username', 'email', 'password1', 'password2')
-
-
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(
-        label='Username or Email',
+    username = forms.CharField(label='username',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Input Username or Email'
-        })
-    )
+            'placeholder': 'Input Username'
+        }))
 
-    password = forms.CharField(
+    email = forms.CharField(label='Email',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Input Email'
+        }))
+
+    password1 = forms.CharField(label='Password',
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Input Password'
-        })
-    )
+        }))
+
+    password2 = forms.CharField(label='Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Input Password'
+        }))
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label='Username',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Input Username'
+        }))
+
+    password = forms.CharField(label='Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Input Password'
+        }))
 
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'message']
+
+
+class AdditionalInfoForm(forms.ModelForm):
+    class Meta:
+        model = AdditionalInfo
+        fields = ['field_name', 'value']
+
         widgets = {
-            'name': forms.TextInput(attrs={
+            'field_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Your Name'
+                'placeholder': 'Example: Skills'
             }),
-            'email': forms.EmailInput(attrs={
+            'value': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Your Email'
-            }),
-            'message': forms.Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Your Message',
-                'rows': 4
-            }),
+                'placeholder': 'Example: Python'
+            })
         }

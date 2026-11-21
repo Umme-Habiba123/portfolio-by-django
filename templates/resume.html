@@ -1,20 +1,56 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
 
-<h2>My Resume</h2><br>
+<div class="container my-4">
 
-{% if portfolio %}
-    <h5>{{ portfolio.name }}</h5>
-    <p>{{ portfolio.bio }}</p>
-    <p>Email: {{ portfolio.email }}</p>
-    <p>Phone: {{ portfolio.phone }}</p>
-    <p>Location: {{ portfolio.location }}</p>
-    <p>Skills: {{ portfolio.skills }}</p>
-    <p>Projects: {{ portfolio.projects }}</p>
-    <p>Education: {{ portfolio.education }}</p>
-    <p>Experience: {{ portfolio.experience }}</p>
-{% else %}
-    <p>No portfolio information has been added yet.</p>
-{% endif %}
+    <h2>My Resume</h2>
+    <hr>
+
+    {% if portfolio %}
+
+        <h3>{{ portfolio.name }}</h3>
+        <p>{{ portfolio.bio }}</p>
+
+        <hr>
+
+        <h4>Contact Information</h4>
+        <p>Email: {{ portfolio.email }}</p>
+        <p>Phone: {{ portfolio.phone }}</p>
+        <p>Location: {{ portfolio.location }}</p>
+
+        <hr>
+
+        <h4>Skills</h4>
+        <p>{{ portfolio.skills }}</p>
+
+        <h4>Projects</h4>
+        <p>{{ portfolio.projects }}</p>
+
+        <h4>Education</h4>
+        <p>{{ portfolio.education }}</p>
+
+        <h4>Experience</h4>
+        <p>{{ portfolio.experience }}</p>
+
+        <hr>
+
+        <h3>Additional Information</h3>
+
+        {% for info in portfolio.additional_infos.all %}
+
+            <h4>{{ info.field_name }}</h4>
+            <p>{{ info.value }}</p>
+
+        {% empty %}
+            <p>No additional information added.</p>
+        {% endfor %}
+
+    {% else %}
+
+        <p>No portfolio information has been added yet.</p>
+
+    {% endif %}
+
+</div>
 
 {% endblock content %}

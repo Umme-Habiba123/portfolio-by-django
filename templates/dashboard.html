@@ -1,19 +1,82 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<div class="container">
-    {% for item in portfolio %}
-  
-    <h3>{{ item.name }}</h3>
-    <p>{{ item.bio }}</p>
-    <p>{{ item.email }}</p>
 
-    <button><a href="{% url 'updateinfo' item.id %}">Update</a></button>
-    <br>
+<div class="container my-4">
 
-  <button class="my-2">  <a href="{% url 'addinfo' %}">Add Portfolio Info.</a></button>
-{% empty %}
-    <p>No portfolio information added yet.</p>
-{% endfor %}
+    <h2 class="mb-4">My Dashboard</h2>
+
+    {% if portfolio %}
+
+        <div class="card p-4 mb-4 shadow-sm">
+
+            <h3>{{ portfolio.name }}</h3>
+
+            <hr>
+
+            <h5>Basic Information</h5>
+
+            <p><strong>Bio:</strong> {{ portfolio.bio }}</p>
+            <p><strong>Email:</strong> {{ portfolio.email }}</p>
+            <p><strong>Phone:</strong> {{ portfolio.phone }}</p>
+            <p><strong>Location:</strong> {{ portfolio.location }}</p>
+
+            <hr>
+
+            <h5>Skills</h5>
+            <p>{{ portfolio.skills|default:"Not added" }}</p>
+
+            <h5>Projects</h5>
+            <p>{{ portfolio.projects|default:"Not added" }}</p>
+
+            <h5>Education</h5>
+            <p>{{ portfolio.education|default:"Not added" }}</p>
+
+            <h5>Experience</h5>
+            <p>{{ portfolio.experience|default:"Not added" }}</p>
+
+            <hr>
+
+            <h5>Additional Information</h5>
+
+            {% for info in additional_infos %}
+
+                <p>
+                    <strong>{{ info.field_name }}:</strong>
+                    {{ info.value }}
+                </p>
+
+            {% empty %}
+
+                <p>No additional information added.</p>
+
+            {% endfor %}
+
+            <hr>
+
+            <a href="{% url 'updateinfo' portfolio.id %}"
+               class="btn btn-warning">
+                Update Information
+            </a>
+
+        </div>
+
+    {% else %}
+
+        <div class="card p-4 text-center shadow-sm">
+
+            <h5>No Portfolio Information Found!</h5>
+
+            <p>Please add your portfolio information first.</p>
+
+            <a href="{% url 'addinfo' %}" class="btn btn-primary">
+                Add Portfolio Info
+            </a>
+
+        </div>
+
+    {% endif %}
+
 </div>
 
 {% endblock content %}

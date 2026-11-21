@@ -1,14 +1,115 @@
+
 {% extends 'base.html' %}
+
 {% block content %}
 
-<div class="container">
+<div class="container my-4">
+
     <h2>Update Portfolio Information</h2>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="card p-4 mb-4">
+
+            <h4>Personal Information</h4>
+
+            {% for field in form %}
+                <div class="mb-3">
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="card p-4 mb-4">
+
+            <h4>Additional Information</h4>
+
+            {% for info in additional_infos %}
+
+                <div class="border rounded p-3 mb-3">
+
+                    <input type="hidden"
+                           name="info_id"
+                           value="{{ info.id }}">
+
+                    <div class="mb-3">
+                        <label>Field Name</label>
+                        <input type="text"
+                               name="field_name"
+                               value="{{ info.field_name }}"
+                               class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Value</label>
+                        <input type="text"
+                               name="value"
+                               value="{{ info.value }}"
+                               class="form-control">
+                    </div>
+
+                    <label>
+                        <input type="checkbox"
+                               name="delete_info"
+                               value="{{ info.id }}">
+                        Delete
+                    </label>
+
+                </div>
+
+            {% endfor %}
+
+            <hr>
+
+            <h5>Add New Information</h5>
+
+            {% for i in new_fields %}
+
+                <div class="border rounded p-3 mb-3">
+
+                    <div class="mb-3">
+                        <label>Field Name</label>
+                        <input type="text"
+                               name="new_field_name"
+                               class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Value</label>
+                        <input type="text"
+                               name="new_value"
+                               class="form-control">
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+            <button type="submit"
+                    name="add_field"
+                    value="yes"
+                    class="btn btn-success">
+                + Add Info
+            </button>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Save Changes
+        </button>
+
+        <a href="{% url 'dashboard' %}"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
 </div>
 
-{% endblock content % }
+{% endblock content %}

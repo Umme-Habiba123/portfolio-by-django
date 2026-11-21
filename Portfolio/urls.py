@@ -16,6 +16,9 @@ urlpatterns=[
     path('contact/', Contact, name='contact'),
     path('updateinfo/<int:id>/', UpdateInfo, name='updateinfo'),
     path('resume/', resume, name='resume'),
+    path('addadditionalinfo/<int:id>/', AddAdditionalInfo, name='addadditionalinfo'),
+    path('editadditionalinfo/<int:id>/<int:info_id>/', EditAdditionalInfo, name='editadditionalinfo'),
+    path('deleteadditionalinfo/<int:id>/<int:info_id>/', DeleteAdditionalInfo, name='deleteadditionalinfo'),
 ]
 
 
